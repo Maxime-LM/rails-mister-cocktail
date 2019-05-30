@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :cockails
+  resources :cocktails, only: [:index, :show, :new, :create] do
+    # GET "cocktails/42/doses/new"
+    # POST "cocktails/42/doses"
+    resources :doses, only: [:new, :create]
+  end
+
+  # DELETE "/doses/25"
+
+  resources :doses, only: [:destroy]
 end
