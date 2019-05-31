@@ -5,28 +5,34 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Dose.destroy_all
 
-Ingredient.create(name: "lemon")
-Ingredient.create(name: "ice")
-Ingredient.create(name: "mint leaves")
-Ingredient.create(name: "coffee")
-Ingredient.create(name: "cidre")
+Cocktail.destroy_all
+Ingredient.destroy_all
 
-Cocktail.create(name: "Coffe Breton")
+citron = Ingredient.create(name: "citrons verts")
+menthe = Ingredient.create(name: "menthe")
+eau_gazeuse = Ingredient.create(name: "eau gazeuse")
+sucre = Ingredient.create(name: "sirop de sucre")
+rhum = Ingredient.create(name: "rhum")
+vin_blanc = Ingredient.create(name: "vin blanc")
+tequila = Ingredient.create(name: "tequila")
 
-Dose.create(description: "Shot coffe", cocktail: Cocktail.first, ingredient: Ingredient.fourth )
-Dose.create(description: "Shot Cidre", cocktail: Cocktail.first, ingredient: Ingredient.last )
-Dose.create(description: "Shot lemon", cocktail: Cocktail.first, ingredient: Ingredient.first )
+Cocktail.create!(name: "Mojito")
 
-Cocktail.create(name: "Lemon ice")
-Dose.create(description: "Shot lemon", cocktail: Cocktail.last, ingredient: Ingredient.first )
-Dose.create(description: "Shot ice", cocktail: Cocktail.last, ingredient: Ingredient.second )
+Dose.create!(description: "6cl", cocktail: Cocktail.first, ingredient: rhum )
+Dose.create!(description: "3cl de jus", cocktail: Cocktail.first, ingredient: citron )
+Dose.create!(description: "7 feuilles de menthe", cocktail: Cocktail.first, ingredient: menthe )
+Dose.create!(description: "remplir le reste du verre", cocktail: Cocktail.first, ingredient: eau_gazeuse )
+Dose.create!(description: "2 cl", cocktail: Cocktail.first, ingredient: sucre )
 
-# puts 'Creating doses...'
-# restaurants_attributes = [
-#   {
-#     description:         'Dishoom',
-#     address:      '7 Boundary St, London E2 7JE',
-#     description:  'Buzzy destination for Indian street food in Bombay-style vintage decor.',
-#     stars:        5
-#   },
+lemontype = Cocktail.create!(name: "Lemon type")
+
+Dose.create!(description: "5cl", cocktail: lemontype, ingredient: vin_blanc )
+Dose.create!(description: "3cl", cocktail: lemontype, ingredient: citron )
+Dose.create!(description: "remplir le reste du verre", cocktail: lemontype, ingredient: eau_gazeuse )
+
+mocking = Cocktail.create!(name: "Mockingbird")
+Dose.create!(description: "5cl", cocktail: mocking, ingredient: tequila )
+Dose.create!(description: "1cl", cocktail: mocking, ingredient: citron )
+
