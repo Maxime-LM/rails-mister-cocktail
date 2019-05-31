@@ -77,8 +77,6 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#
-[...]
 production:
   <<: *default
   url: <%= ENV['POSTGRESQL_ADDON_URI'] %>
